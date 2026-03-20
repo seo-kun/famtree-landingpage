@@ -1,0 +1,56 @@
+{
+  "site": {
+    "name": "FamTree.",
+    "tagline": "Merawat Ingatan, Menyambung Tali Keluarga.",
+    "description": "Jangan biarkan cerita dan garis keturunan terputus. Catat, simpan, dan bagikan silsilah keluargamu dalam visual pohon yang indah, bersih, dan mudah diakses oleh seluruh keluarga.",
+    "cta_primary": "Coba Sekarang",
+    "cta_secondary": "Lihat Contoh Silsilah",
+    "app_url": "https://app.famtree.my.id",
+    "footer_note": "Dibuat dengan niat baik untuk merawat kenangan.",
+    "social_badge": "Untuk Generasi Selanjutnya"
+  },
+  "navigation": [
+    { "label": "Beranda", "href": "/" },
+    { "label": "Tentang", "href": "/tentang" },
+    { "label": "Panduan", "href": "/panduan" }
+  ],
+  "home": {
+    "hero_title_1": "Merawat Ingatan,",
+    "hero_title_2": "Menyambung Tali Keluarga.",
+    "hero_description": "Jangan biarkan cerita dan garis keturunan terputus. Catat, simpan, dan bagikan silsilah keluargamu dalam visual pohon yang indah, bersih, dan mudah diakses oleh seluruh keluarga.",
+    "badge_text": "Untuk Generasi Selanjutnya",
+    "avatars_note": "Tersimpan rapi untuk diwariskan ke generasi mendatang."
+  },
+  "tentang": {
+    "title": "Tentang FamTree.",
+    "paragraphs": [
+      "FamTree bermula dari sebuah pemikiran sederhana di momen Lebaran: Seiring bertambahnya usia, kita sering kali menyadari bahwa ada banyak cabang keluarga yang belum kita kenal, atau bahkan terlupakan.",
+      "Aplikasi web sederhana ini dibuat sebagai bentuk dedikasi untuk mencatat, merapikan, dan menyimpan silsilah keluarga agar tidak terputus oleh waktu. Baik itu garis keturunan dari pihak Ibu, maupun dari pihak Ayah.",
+      "Dengan desain yang berfokus pada kebersihan visual (clean) dan kesejukan, FamTree dirancang agar mudah dibaca oleh siapa saja, dari generasi muda hingga kakek-nenek kita."
+    ],
+    "quote": "Karena setiap nama dalam keluarga membawa cerita yang pantas untuk diingat."
+  },
+  "panduan": {
+    "title": "Cara Kerja & Panduan",
+    "steps": [
+      {
+        "id": 1,
+        "icon": "folder-plus",
+        "title": "1. Buat Pohon",
+        "description": "Mulai dengan menekan tombol \"Coba Sekarang\". Kamu bisa membuat *root* atau akar utama, misalnya dimulai dari Kakek/Nenek buyutmu."
+      },
+      {
+        "id": 2,
+        "icon": "users",
+        "title": "2. Tambah Anggota",
+        "description": "Tambahkan anak, pasangan, atau saudara. Sistem kami akan secara otomatis mengatur garis keturunan agar terlihat rapi dan tidak saling bertabrakan."
+      },
+      {
+        "id": 3,
+        "icon": "share-2",
+        "title": "3. Simpan & Bagikan",
+        "description": "Setelah silsilah terbentuk, kamu bisa membagikan tautan pohon keluargamu ke grup WhatsApp keluarga besar agar mereka bisa melihatnya."
+      }
+    ]
+  }
+}

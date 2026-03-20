@@ -1,0 +1,12 @@
+---
+import content from '../data/content.json';
+const { site } = content;
+---
+
+<footer class="border-t border-brand-200/60 py-8 text-center bg-white mt-auto">
+    <div class="flex items-center justify-center gap-2 mb-2">
+        <i data-lucide="leaf" class="w-4 h-4 text-brand-500"></i>
+        <span class="font-serif font-bold text-brand-950">{site.name}</span>
+    </div>
+    <p class="text-sm text-gray-500 font-light">&copy; {new Date().getFullYear()} {site.name}. {site.footer_note}</p>
+</footer>
