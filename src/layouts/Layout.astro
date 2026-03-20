@@ -6,25 +6,52 @@ import content from '../data/content.json';
 
 interface Props {
 	title?: string;
+	description?: string;
+	image?: string;
 }
 
-const { title } = Astro.props;
+const { 
+	title, 
+	description = content.site.description,
+	image = '/og-image.png'
+} = Astro.props;
+
 const siteTitle = title ? `${title} | FamTree` : `${content.site.name} | Catat Silsilah Keluargamu`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://famtree.my.id');
 ---
 
 <!doctype html>
 <html lang="id">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content={content.site.description} />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<link rel="canonical" href={canonicalURL} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{siteTitle}</title>
 
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={siteTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(image, canonicalURL)} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={siteTitle} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL(image, canonicalURL)} />
+
+		<!-- Font Preloading untuk Performa Lighthouse -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+		<noscript>
+			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+		</noscript>
 		
 		<ClientRouter />
 	</head>

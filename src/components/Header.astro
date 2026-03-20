@@ -10,7 +10,7 @@ function isActive(href) {
 ---
 
 <header class="w-full px-6 py-4 md:px-12 flex justify-between items-center border-b border-brand-200/50 bg-white/70 backdrop-blur-md sticky top-0 z-50">
-    <a href="/" class="flex items-center gap-2 cursor-pointer">
+    <a href="/" class="flex items-center gap-2 cursor-pointer" aria-label="Ke Halaman Beranda">
         <div class="bg-brand-600 p-2 rounded-lg text-white">
             <i data-lucide="leaf" class="w-5 h-5"></i>
         </div>
@@ -38,7 +38,7 @@ function isActive(href) {
             {site.cta_primary}
         </a>
         <!-- Mobile Menu Toggle -->
-        <button id="mobile-menu-btn" class="md:hidden p-2 text-brand-900 focus:outline-none">
+        <button id="mobile-menu-btn" aria-label="Buka Menu Navigasi" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden p-2 text-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-lg">
             <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
         </button>
     </div>
@@ -74,10 +74,12 @@ function isActive(href) {
                 if (isHidden) {
                     mobileMenu.classList.remove('hidden');
                     mobileMenu.classList.add('flex');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'true');
                     menuIcon.setAttribute('data-lucide', 'x');
                 } else {
                     mobileMenu.classList.add('hidden');
                     mobileMenu.classList.remove('flex');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
                     menuIcon.setAttribute('data-lucide', 'menu');
                 }
                 
