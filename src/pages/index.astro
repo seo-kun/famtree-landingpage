@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import TreePreview from '../components/TreePreview.astro';
 import content from '../data/content.json';
+import { PlayCircle } from '@lucide/astro';
 
 const { home, site } = content;
 ---
@@ -28,7 +29,7 @@ const { home, site } = content;
             <div class="flex flex-col sm:flex-row gap-4">
                 <a href={site.app_url}
                     class="bg-brand-600 hover:bg-brand-700 text-white px-8 py-4 rounded-full text-base font-medium transition-all shadow-lg shadow-brand-200/50 flex items-center justify-center gap-2 group">
-                    <i data-lucide="play-circle" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                    <PlayCircle class="w-5 h-5 group-hover:scale-110 transition-transform" />
                     {site.cta_primary}
                 </a>
                 <button

@@ -62,14 +62,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://famtree.
 		</main>
 		<Footer />
 		
-		<script is:inline src="https://unpkg.com/lucide@latest"></script>
-		<script is:inline>
-			document.addEventListener('astro:page-load', () => {
-				if (window.lucide) {
-					window.lucide.createIcons();
-				}
-			});
-		</script>
 	</body>
 </html>
 

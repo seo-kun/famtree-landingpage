@@ -1,5 +1,7 @@
 ---
 import content from '../data/content.json';
+import { Leaf, Menu, X } from '@lucide/astro';
+
 const { navigation, site } = content;
 const currentPath = Astro.url.pathname;
 
@@ -12,7 +14,7 @@ function isActive(href) {
 <header class="w-full px-6 py-4 md:px-12 flex justify-between items-center border-b border-brand-200/50 bg-white/70 backdrop-blur-md sticky top-0 z-50">
     <a href="/" class="flex items-center gap-2 cursor-pointer" aria-label="Ke Halaman Beranda">
         <div class="bg-brand-600 p-2 rounded-lg text-white">
-            <i data-lucide="leaf" class="w-5 h-5"></i>
+            <Leaf class="w-5 h-5" />
         </div>
         <span class="font-serif font-bold text-xl tracking-tight text-brand-950">{site.name}</span>
     </a>
@@ -39,7 +41,8 @@ function isActive(href) {
         </a>
         <!-- Mobile Menu Toggle -->
         <button id="mobile-menu-btn" aria-label="Buka Menu Navigasi" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden p-2 text-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-lg">
-            <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+            <Menu id="menu-icon-bars" class="w-6 h-6" />
+            <X id="menu-icon-close" class="w-6 h-6 hidden" />
         </button>
     </div>
 
@@ -65,9 +68,10 @@ function isActive(href) {
     function setupMenu() {
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
+        const iconBars = document.getElementById('menu-icon-bars');
+        const iconClose = document.getElementById('menu-icon-close');
 
-        if (mobileMenuBtn && mobileMenu && menuIcon) {
+        if (mobileMenuBtn && mobileMenu && iconBars && iconClose) {
             mobileMenuBtn.addEventListener('click', () => {
                 const isHidden = mobileMenu.classList.contains('hidden');
                 
@@ -75,21 +79,19 @@ function isActive(href) {
                     mobileMenu.classList.remove('hidden');
                     mobileMenu.classList.add('flex');
                     mobileMenuBtn.setAttribute('aria-expanded', 'true');
-                    menuIcon.setAttribute('data-lucide', 'x');
+                    iconBars.classList.add('hidden');
+                    iconClose.classList.remove('hidden');
                 } else {
                     mobileMenu.classList.add('hidden');
                     mobileMenu.classList.remove('flex');
                     mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                    menuIcon.setAttribute('data-lucide', 'menu');
-                }
-                
-                if (window.lucide) {
-                    window.lucide.createIcons();
+                    iconBars.classList.remove('hidden');
+                    iconClose.classList.add('hidden');
                 }
             });
         }
     }
 
-    // Run on every page load (Astro View Transitions support)
+    // Run on init and after transitions
     document.addEventListener('astro:page-load', setupMenu);
 </script>

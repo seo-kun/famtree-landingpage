@@ -1,8 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import content from '../data/content.json';
+import { FolderPlus, Users, Share2, ArrowRight } from '@lucide/astro';
 
 const { panduan, site } = content;
+
+const iconMap = {
+    'folder-plus': FolderPlus,
+    'users': Users,
+    'share-2': Share2
+};
 ---
 
 <Layout title="Panduan">
@@ -10,22 +17,25 @@ const { panduan, site } = content;
         <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-950 mb-10 text-center">{panduan.title}</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {panduan.steps.map(step => (
-                <div class="bg-white p-8 rounded-2xl border border-brand-200 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 bg-brand-50 rounded-xl mb-6 flex items-center justify-center text-brand-600 border border-brand-100">
-                        <i data-lucide={step.icon} class="w-6 h-6"></i>
+            {panduan.steps.map(step => {
+                const IconComponent = iconMap[step.icon];
+                return (
+                    <div class="bg-white p-8 rounded-2xl border border-brand-200 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-brand-50 rounded-xl mb-6 flex items-center justify-center text-brand-600 border border-brand-100">
+                            {IconComponent && <IconComponent class="w-6 h-6" />}
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-brand-950 mb-3">{step.title}</h3>
+                        <p class="text-gray-600 font-light text-sm leading-relaxed" set:html={step.description}></p>
                     </div>
-                    <h3 class="font-serif font-bold text-xl text-brand-950 mb-3">{step.title}</h3>
-                    <p class="text-gray-600 font-light text-sm leading-relaxed" set:html={step.description}></p>
-                </div>
-            ))}
+                );
+            })}
         </div>
 
         <div class="mt-12 text-center">
             <a href={site.app_url}
                 class="inline-flex bg-brand-600 hover:bg-brand-700 text-white px-8 py-4 rounded-full text-base font-medium transition-all shadow-lg shadow-brand-200/50 items-center justify-center gap-2">
                 {site.cta_primary}
-                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                <ArrowRight class="w-5 h-5" />
             </a>
         </div>
     </div>
