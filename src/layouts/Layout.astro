@@ -29,7 +29,28 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://famtree.
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<link rel="canonical" href={canonicalURL} />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="keywords" content="silsilah keluarga, family tree, pohon keluarga, catat silsilah, famtree" />
+		<meta name="author" content="FamTree" />
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+		<meta name="theme-color" content="#fdfbf7" />
 		<title>{siteTitle}</title>
+
+		<!-- Schema.org JSON-LD -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "WebSite",
+			"name": siteTitle,
+			"url": canonicalURL.toString(),
+			"description": description,
+			"publisher": {
+				"@type": "Organization",
+				"name": "FamTree",
+				"logo": {
+					"@type": "ImageObject",
+					"url": new URL("/favicon.png", canonicalURL).toString()
+				}
+			}
+		})} />
 
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
@@ -37,6 +58,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://famtree.
 		<meta property="og:title" content={siteTitle} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={new URL(image, canonicalURL)} />
+		<meta property="og:site_name" content="FamTree" />
+		<meta property="og:locale" content="id_ID" />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
